@@ -22,6 +22,28 @@ export default {
           msgType: "text",
           avatar:
             "http://www.520touxiang.com/uploads/allimg/202004111223/aph4ug1vd1r.jpg"
+        },
+        {
+          type: "other",
+          msg: "hi",
+          msgType: "text",
+          avatar:
+            "http://www.520touxiang.com/uploads/allimg/202004111223/tre4xsmvup3.jpg"
+        },
+        {
+          type: "owner",
+          msg: "很长".repeat(100) + "的文字",
+          msgType: "text",
+          avatar:
+            "http://www.520touxiang.com/uploads/allimg/202004111223/aph4ug1vd1r.jpg"
+        },
+        {
+          type: "owner",
+          msg:
+            "https://img04.sogoucdn.com/app/a/100520024/c22fcaf66b1790835d9b41dede8986bf",
+          msgType: "image",
+          avatar:
+            "http://www.520touxiang.com/uploads/allimg/202004111223/aph4ug1vd1r.jpg"
         }
       ]
     };
@@ -30,7 +52,6 @@ export default {
 </script>
 
 <style>
-/* http://www.520touxiang.com/uploads/allimg/202004111223/tre4xsmvup3.jpg */
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
