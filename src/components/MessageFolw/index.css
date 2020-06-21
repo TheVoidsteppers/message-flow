@@ -1,0 +1,85 @@
+ul {
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: auto;
+  background-color: #ededed;
+}
+li {
+  margin: 5px 0;
+  padding: 10px 40px;
+  display: flex;
+  flex-direction: column;
+}
+.msg-time,
+.msg-system {
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+.msg-time span,
+.msg-system span {
+  display: inline-block;
+  padding: 0 5px;
+  font-size: 12px;
+  color: #fff;
+  border-radius: 2px;
+  background-color: #dadada;
+}
+.msg {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.msg.is-owner {
+  flex-direction: row;
+}
+.avatar {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: -30px;
+}
+.msg.is-owner .avatar {
+  left: initial;
+  left: -30px;
+}
+.msg-text-line,
+.msg-image-line {
+  border-radius: 2px;
+  box-shadow: 0px 1px 7px -5px #000;
+}
+.msg-text-line {
+  position: relative;
+  padding: 5px;
+  display: inline-block;
+  background-color: #06c05f;
+  text-align: left;
+}
+.msg.is-owner .msg-text-line {
+  background-color: #fff;
+}
+.msg-text-line::before {
+  width: 0;
+  height: 0;
+  content: "";
+  position: absolute;
+  right: -10px;
+  top: 5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent;
+  border-left-color: #06c05f;
+}
+.msg.is-owner .msg-text-line::before {
+  left: -10px;
+  border-left-color: transparent;
+  border-right-color: #fff;
+}
+.msg-image-line {
+  position: relative;
+  width: 50%;
+  font-size: 0;
+  cursor: pointer;
+}
+.msg-image-line img {
+  width: 100%;
+}

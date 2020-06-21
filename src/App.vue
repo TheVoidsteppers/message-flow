@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <MessageFolw class="msg-box" :msgList="messageList" />
+    <MessageFolw
+      class="msg-box"
+      :msgList="messageList"
+      @early-data="updataMsgList(true)"
+      @new-data="updataMsgList(false)"
+    />
   </div>
 </template>
 
 <script>
 import MessageFolw from "./components/MessageFolw";
 import "@/assets/style/index.css";
+import { messageList, newMessage, earlyMessage } from "@/mock";
 
 export default {
   name: "App",
@@ -15,38 +21,38 @@ export default {
   },
   data() {
     return {
-      messageList: [
-        {
-          type: "owner",
-          msg: "hello world",
-          msgType: "text",
-          avatar:
-            "http://www.520touxiang.com/uploads/allimg/202004111223/aph4ug1vd1r.jpg"
-        },
-        {
-          type: "other",
-          msg: "hi",
-          msgType: "text",
-          avatar:
-            "http://www.520touxiang.com/uploads/allimg/202004111223/tre4xsmvup3.jpg"
-        },
-        {
-          type: "owner",
-          msg: "很长".repeat(100) + "的文字",
-          msgType: "text",
-          avatar:
-            "http://www.520touxiang.com/uploads/allimg/202004111223/aph4ug1vd1r.jpg"
-        },
-        {
-          type: "owner",
-          msg:
-            "https://img04.sogoucdn.com/app/a/100520024/c22fcaf66b1790835d9b41dede8986bf",
-          msgType: "image",
-          avatar:
-            "http://www.520touxiang.com/uploads/allimg/202004111223/aph4ug1vd1r.jpg"
-        }
-      ]
+      messageList: [],
+      isPadding: false
     };
+  },
+  mounted() {
+    this.fetchMsgList();
+  },
+  methods: {
+    // 获取聊天信息
+    fetchMsgList() {
+      // 模拟接口请求
+      setTimeout(() => {
+        this.messageList = messageList;
+      }, 10);
+    },
+    // 获取新数据
+    updataMsgList(isReverse) {
+      // 节流
+      if (!this.isPadding) {
+        this.isPadding = true;
+        // 模拟接口请求
+        setTimeout(() => {
+          // 是否请求之前的聊天
+          if (isReverse) {
+            this.messageList = earlyMessage.concat(this.messageList);
+          } else {
+            this.messageList = this.messageList.concat(newMessage);
+          }
+          this.isPadding = false;
+        }, 500);
+      }
+    }
   }
 };
 </script>
@@ -62,8 +68,8 @@ export default {
 }
 .msg-box {
   margin: 0 auto;
-  width: 500px;
-  height: 400px;
+  width: 350px;
+  height: 550px;
   border: 1px solid #000;
 }
 </style>
